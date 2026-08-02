@@ -4,7 +4,7 @@ import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 
 // Signup a new user
-export const signup = async ()=>{
+export const signup = async (req, res)=>{
     const {fullName, email, password, bio} = req.body;
 
     try {
@@ -66,8 +66,15 @@ export const updateProfile = async (req,res)=>{
         let updatedUser;
 
         if(!profilePic){
-            updatedUser = await User.findByIdAndUpdate(userId, {bio, fullName},
-                {new:true});
+            // updatedUser = await User.findByIdAndUpdate(userId, {bio, fullName},
+            //     {new:true});
+            updatedUser = await User.findByIdAndUpdate(
+                userId,
+                { bio, fullName },
+                {
+                    returnDocument: "after"
+                }
+            );
         } else {
             const upload = await cloudinary.uploader.upload(profilePic);
 
