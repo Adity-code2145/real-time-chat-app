@@ -5,7 +5,7 @@ import { io, userSocketMap } from "../server.js";
 
 // Get all users except the logged in user
 
-export const getUserForSidebar = async () => {
+export const getUserForSidebar = async (req,res) => {
   try {
     const userId = req.user._id; // here userId -> ko receiverId me niche paste hoga
     const filteredUsers = await User.find({ _id: { $ne: userId } }).select(
@@ -78,7 +78,7 @@ export const sendMessage = async (req, res) => {
 
     let imageUrl;
     if (image) {
-      const uploadResponse = await clodinary.uploader.upload(image);
+      const uploadResponse = await cloudinary.uploader.upload(image);
       imageUrl = uploadResponse.secure_url;
     }
 
@@ -99,6 +99,6 @@ export const sendMessage = async (req, res) => {
 
     res.json({ success: true, newMessage });
   } catch (error) {
-    res.json({ success: true, message: error.message });
+    res.json({ success: false, message: error.message });
   }
 };

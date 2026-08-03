@@ -93,8 +93,9 @@ export const AuthProvider = ({ children }) => {
     useEffect(()=>{
         if(token){
             axios.defaults.headers.common["token"] = token;
+             checkAuth();
         }
-        checkAuth();
+       
     },[])
 
     const value = { // it is used so we can access these state and function in any page and component.
