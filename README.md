@@ -268,7 +268,7 @@ This project is licensed under the MIT License.
 **Aditya Raj**
 
 - GitHub: https://github.com/Adity-code2145
-- LinkedIn: *(Add your LinkedIn profile here)*
+- LinkedIn: https://www.linkedin.com/in/adiraj2145/
 
 ---
 
